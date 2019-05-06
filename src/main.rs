@@ -15,6 +15,12 @@ enum Message {
     ChangeColor(i32, i32, i32), // 3 i32 values
 }
 
+#[derive(Debug)]
+enum UsState {
+    Alabama,
+    Alaska,
+}
+
 impl Message {
     fn call(&self) {
         match self {
@@ -28,11 +34,6 @@ impl Message {
     }
 }
 
-#[derive(Debug)]
-enum UsState {
-    Alabama,
-    Alaska,
-}
 
 enum Coin {
     Penny,
@@ -62,23 +63,14 @@ fn plus_one(x: Option<i32>) -> Option<i32> {
 }
 
 fn main() {
+
     // the :: syntax is used either for associated functions,
     // parts of modules,
     // or specifying enum variants as is done here
     
-    //let four = IpAddrKind::v4;
-    //let six = IpAddrKind::v6;
-
     let home = IpAddrKind::V4(127, 0, 0, 1);
 
     let loopback = IpAddrKind::V6(String::from("::1"));
-
-    //fn route(ip_type: IpAddrKind) {
-    //
-    //};
-
-    //route(IpAddrKind::V4);
-    //route(IpAddrKind::V6);
 
     let m = Message::Write(String::from("hello"));
     m.call(); // call would be called on the "hello" string above
@@ -94,4 +86,29 @@ fn main() {
     let five = Some(5);
     let six = plus_one(five);
     let none = plus_one(None);
+
+    // using `if let ` ...
+    let some_u8_value = Some(0u8);
+
+    //match some_u8_value {
+    //    Some(3) => println!("three"),
+    //    _ => (),
+    //}
+    
+    if let Some(3) = some_u8_value {
+        println!("three");
+    }
+
+    let mut count = 0;
+    let coin = Coin::Quarter(UsState::Alabama);
+    //match coin {
+    //    Coin::Quarter(state) => println!("State quarter from {:?}", state),
+    //    _ => count += 1,
+    //}
+
+    if let Coin::Quarter(state) = coin {
+        println!("State quarter from {:?}", state);
+    } else {
+        count += 1;
+    }
 }
