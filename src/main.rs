@@ -82,3 +82,20 @@ match some_u8_value {
     7 => println!("seven"),
     _ => (),
 }
+
+// Rather than covering all cases
+// exhaustively with match, a simpler
+// conditional can be handled with
+// if let
+
+// the verbose way
+let some_u8_value = Some(Ou8);
+match some_u8_value {
+    Some(3) => println!("three"),
+    _ => (),
+}
+
+// More consisely
+if let Some(3) = some_u8_value {
+    println!("three");
+}
