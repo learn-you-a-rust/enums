@@ -70,3 +70,15 @@ fn plus_one(x: Option<i32>) -> Option<i32> {
 let five = Some(5);
 let six + plus_one(five);
 let none = plus_one(None);
+
+// The _ placeholder will match any value
+// that isn't explicitly listed in the
+// match statement
+let some_u8_value = Ou8;
+match some_u8_value {
+    1 => println!("one"),
+    3 => println!("three"),
+    5 => println!("five"),
+    7 => println!("seven"),
+    _ => (),
+}
