@@ -99,3 +99,12 @@ match some_u8_value {
 if let Some(3) = some_u8_value {
     println!("three");
 }
+
+// An else condition can also be
+// included in if let branching
+let mut count = 0;
+if let Coin::Quarter(state) = coin {
+    println!("Quarter from {:?}!", state);
+} else {
+    count += 1;
+}
